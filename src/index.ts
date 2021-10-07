@@ -8,18 +8,18 @@ const tableMetalBar = document.querySelectorAll('.metal-bar');
 const tableCloth = document.querySelectorAll('.cloth');
 const tableLeather = document.querySelectorAll('.leather');
 
-const ResourceProportion = [ //[planks, metal bar, cloth, leather]
+const ResourceProportion: readonly number[][] = [	//[planks, metal bar, cloth, leather]
 	[20, 68.69, 11.11, 0],
 	[26.67, 26.67, 0, 46.66],
 	[40, 11.11, 48.89, 0],
 	[44.44, 22.22, 22.22, 11.11],
 ];
 
-const baseReturnYield = [16, 8, 5.3333, 4.4651, 4.129]; //return at 100% happiness
+const baseReturnYield: readonly number[] = [16, 8, 5.3333, 4.4651, 4.129]; //return at 100% happiness
 
-const averageEnchanted = [94.45, 5, 0.5, 0.05]; 
+const averageEnchanted: readonly number[] = [94.45, 5, 0.5, 0.05]; //enchanted material percentage
 
-let weightedCostSummary: number[][] = [[], [], [], []];
+let weightedCostSummary: number[][] = [[], [], [], []]; //weighted cost table in form of an array
 
 async function getData(city: string) {
 	try {
@@ -38,15 +38,15 @@ async function getData(city: string) {
 	} catch (error) {}
 }
 
-function update() {
+function update():void {
 	const city = document.getElementById('city') as HTMLSelectElement;
 	const cityOption: string = city!.options[city!.selectedIndex].value;
 
 	getData(cityOption);
 }
 
-const weightedCost = (data: { sell_price_min: number }[]) => {
-    weightedCostSummary = [[], [], [], []];
+const weightedCost = (data: { sell_price_min: number }[]):void => {
+    weightedCostSummary = [[], [], [], []]; // empty previous weightedCost array
     
 	tablePlanks.forEach((product, index) => {
 		let average: number[] = [];
@@ -93,7 +93,7 @@ const weightedCost = (data: { sell_price_min: number }[]) => {
 	});
 };
 
-const calculateProfit = (data: { sell_price_min: number }[]) => {
+const calculateProfit = (data: { sell_price_min: number }[]):void => {
 	const happiness = document.getElementById('happiness') as HTMLInputElement;
 	const happinessValue: number = parseInt(happiness.value) / 100;
 
@@ -110,7 +110,7 @@ const calculateProfit = (data: { sell_price_min: number }[]) => {
 			);
 		}
 		let productProfit =
-			sum.reduce((a, b) => a + b, 0) + data[10 + 24 * index].sell_price_min;
+			sum.reduce((a, b) => a + b, 0) + data[10 + 24 * index].sell_price_min; 
 		product.innerHTML = (
 			(productProfit - data[11 + 24 * index].sell_price_min) *
 			(1 - marketTaxValue)

@@ -50,8 +50,8 @@ var ResourceProportion = [
     [44.44, 22.22, 22.22, 11.11],
 ];
 var baseReturnYield = [16, 8, 5.3333, 4.4651, 4.129]; //return at 100% happiness
-var averageEnchanted = [94.45, 5, 0.5, 0.05];
-var weightedCostSummary = [[], [], [], []];
+var averageEnchanted = [94.45, 5, 0.5, 0.05]; //enchanted material percentage
+var weightedCostSummary = [[], [], [], []]; //weighted cost table in form of an array
 function getData(city) {
     return __awaiter(this, void 0, void 0, function () {
         var response, responseJson, error_1;
@@ -87,7 +87,7 @@ function update() {
     getData(cityOption);
 }
 var weightedCost = function (data) {
-    weightedCostSummary = [[], [], [], []];
+    weightedCostSummary = [[], [], [], []]; // empty previous weightedCost array
     tablePlanks.forEach(function (product, index) {
         var average = [];
         for (var i = 0; i < 4; i++) {
