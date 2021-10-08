@@ -3,24 +3,39 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 			rel="stylesheet"
 			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 			crossorigin="anonymous"
 		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Albion Labourers Profit</title>
 		<script src="index.js" defer></script>
 	</head>
-	<body class="container">
-		<h1 class="text-center">Albion Labourers Profit Calculator</h1>
-		<p class="text-center">
-			Tool to find the best Labourers level house to build according to daily prices. For
-			a better experience using the tool, I suggest you to use the Albion Data Client to
-			provide the information necessary to use the current market prices. Detailed
-			instructions
-		</p>
+	<body>
+		<div class="container">
+			<h1 class="text-center">Albion Labourers Profit Calculator</h1>
+
+			<p class="text-center">
+				A tool to find the best Labourer to use according to real-time prices. For a
+				better experience using it, I recommend using the
+				<a
+					href="https://www.albion-online-data.com/"
+					target="_blank"
+					rel="noopener noreferrer"
+					>Albion Data Client</a
+				>
+				to provide the information necessary to use the current market prices. A
+				<a
+					href="https://www.youtube.com/watch?v=wj6PoPwTvdo&ab_channel=BigLipsMcGee"
+					target="_blank"
+					rel="noopener noreferrer"
+					>good video</a
+				>
+				explaining how to use the Albion Data Project for more accurate data.
+			</p>
+		</div>
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col col-lg-2 text-center">
@@ -47,106 +62,189 @@
 						id="happiness"
 						name="happiness"
 						type="number"
-						value="100"
+						value="150"
+						max="150"
+						min="100"
 						onChange="update()"
 						style="width: 4rem"
 					/>
 				</div>
 			</div>
 		</div>
-		<table class="table text-center table-dark table-striped table-hover caption-top">
-			<caption class="text-center"> Profit per labourer </caption>
-			<thead class="text-left">
-				<tr>
-					<th scope="col">Type</th>
-					<th scope="col">T4</th>
-					<th scope="col">T5</th>
-					<th scope="col">T6</th>
-					<th scope="col">T7</th>
-					<th scope="col">T8</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">Blacksmith</th>
-					<td class="blacksmith"></td>
-					<td class="blacksmith"></td>
-					<td class="blacksmith"></td>
-					<td class="blacksmith"></td>
-					<td class="blacksmith"></td>
-				</tr>
-				<tr>
-					<th scope="row">Fletcher</th>
-					<td class="fletcher"></td>
-					<td class="fletcher"></td>
-					<td class="fletcher"></td>
-					<td class="fletcher"></td>
-					<td class="fletcher"></td>
-				</tr>
-				<tr>
-					<th scope="row">Imbuer</th>
-					<td class="imbuer"></td>
-					<td class="imbuer"></td>
-					<td class="imbuer"></td>
-					<td class="imbuer"></td>
-					<td class="imbuer"></td>
-				</tr>
-				<tr>
-					<th scope="row">Tinker</th>
-					<td class="tinker"></td>
-					<td class="tinker"></td>
-					<td class="tinker"></td>
-					<td class="tinker"></td>
-					<td class="tinker"></td>
-				</tr>
-			</tbody>
-		</table>
-		<table class="table text-center table-dark table-striped table-hover caption-top">
-			<caption class="text-center"> Material Weighted Cost </caption>
-			<thead>
-				<tr>
-					<th scope="col">Product</th>
-					<th scope="col">T4</th>
-					<th scope="col">T5</th>
-					<th scope="col">T6</th>
-					<th scope="col">T7</th>
-					<th scope="col">T8</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">Planks</th>
-					<td class="planks"></td>
-					<td class="planks"></td>
-					<td class="planks"></td>
-					<td class="planks"></td>
-					<td class="planks"></td>
-				</tr>
-				<tr>
-					<th scope="row">Metal bar</th>
-					<td class="metal-bar"></td>
-					<td class="metal-bar"></td>
-					<td class="metal-bar"></td>
-					<td class="metal-bar"></td>
-					<td class="metal-bar"></td>
-				</tr>
-				<tr>
-					<th scope="row">Cloth</th>
-					<td class="cloth"></td>
-					<td class="cloth"></td>
-					<td class="cloth"></td>
-					<td class="cloth"></td>
-					<td class="cloth"></td>
-				</tr>
-				<tr>
-					<th scope="row">Leather</th>
-					<td class="leather"></td>
-					<td class="leather"></td>
-					<td class="leather"></td>
-					<td class="leather"></td>
-					<td class="leather"></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="container table-responsive text-center">
+			<h3>Profit per labourer</h3>
+			<table class="table text-center table-dark table-striped table-hover caption-top">
+				<thead class="text-left">
+					<tr>
+						<th scope="col">Type</th>
+						<th scope="col">Tier 4</th>
+						<th scope="col">Tier 5</th>
+						<th scope="col">Tier 6</th>
+						<th scope="col">Tier 7</th>
+						<th scope="col">Tier 8</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Blacksmith</th>
+						<td class="blacksmith"></td>
+						<td class="blacksmith"></td>
+						<td class="blacksmith"></td>
+						<td class="blacksmith"></td>
+						<td class="blacksmith"></td>
+					</tr>
+					<tr>
+						<th scope="row">Fletcher</th>
+						<td class="fletcher"></td>
+						<td class="fletcher"></td>
+						<td class="fletcher"></td>
+						<td class="fletcher"></td>
+						<td class="fletcher"></td>
+					</tr>
+					<tr>
+						<th scope="row">Imbuer</th>
+						<td class="imbuer"></td>
+						<td class="imbuer"></td>
+						<td class="imbuer"></td>
+						<td class="imbuer"></td>
+						<td class="imbuer"></td>
+					</tr>
+					<tr>
+						<th scope="row">Tinker</th>
+						<td class="tinker"></td>
+						<td class="tinker"></td>
+						<td class="tinker"></td>
+						<td class="tinker"></td>
+						<td class="tinker"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="container table-responsive text-center">
+			<h3>Payback return period</h3>
+			<div class="container text-center">
+				<label for="labourer">labourer Profit:</label>
+				<select name="labourer" id="labourer" onChange="update()">
+					<option value="average">Average</option>
+					<option value="blacksmith">Blacksmith</option>
+					<option value="fletcher">Fletcher</option>
+					<option value="imbuer">Imbuer</option>
+					<option value="tinker">Tinker</option>
+				</select>
+			</div>
+
+			<table class="table text-center table-dark table-striped table-hover">
+				<caption
+					>The number of days to receive your investment back is determined assuming that
+					there are 3 Labourers in the house, and they are 1 level below the house level.
+					For example, if the house is at level 5, the Labourers are level 4.</caption
+				>
+				<thead>
+					<tr>
+						<th scope="col">House</th>
+						<th scope="col">Total</th>
+						<th scope="col">Payback (days)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Tier 5</th>
+						<td class="total"></td>
+						<td class="payback"></td>
+					</tr>
+					<tr>
+						<th scope="row">Tier 6</th>
+						<td class="total"></td>
+						<td class="payback"></td>
+					</tr>
+					<tr>
+						<th scope="row">Tier 7</th>
+						<td class="total"></td>
+						<td class="payback"></td>
+					</tr>
+					<tr>
+						<th scope="row">Tier 8</th>
+						<td class="total"></td>
+						<td class="payback"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="container table-responsive text-center">
+			<h3>Material Weighted Cost</h3>
+			<table class="table text-center table-dark table-striped table-hover">
+				<caption
+					>The determination of the material weighted cost is done by multiplying the base
+					loot amount by the amount of material returned from the laborer each day (data
+					from the
+					<a
+						href="http://https://wiki.albiononline.com/wiki/Journal"
+						target="_blank"
+						rel="noopener noreferrer"
+						>Albion online wiki</a
+					>). The prices in orange mean that that data is not accurate. It is recommended
+					to use the Albion data client to update the data for better results.</caption
+				>
+				<thead>
+					<tr>
+						<th scope="col">Product</th>
+						<th scope="col">Tier 4</th>
+						<th scope="col">Tier 5</th>
+						<th scope="col">Tier 6</th>
+						<th scope="col">Tier 7</th>
+						<th scope="col">Tier 8</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Planks</th>
+						<td class="planks"></td>
+						<td class="planks"></td>
+						<td class="planks"></td>
+						<td class="planks"></td>
+						<td class="planks"></td>
+					</tr>
+					<tr>
+						<th scope="row">Metal bar</th>
+						<td class="metal-bar"></td>
+						<td class="metal-bar"></td>
+						<td class="metal-bar"></td>
+						<td class="metal-bar"></td>
+						<td class="metal-bar"></td>
+					</tr>
+					<tr>
+						<th scope="row">Cloth</th>
+						<td class="cloth"></td>
+						<td class="cloth"></td>
+						<td class="cloth"></td>
+						<td class="cloth"></td>
+						<td class="cloth"></td>
+					</tr>
+					<tr>
+						<th scope="row">Leather</th>
+						<td class="leather"></td>
+						<td class="leather"></td>
+						<td class="leather"></td>
+						<td class="leather"></td>
+						<td class="leather"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<footer class="footer bg-dark">
+			<div class="container text-center text-white" style="padding: 1rem 0">
+				<p>This tool is not affiliated with Albion Online or Sandbox Interactive.</p>
+
+				<p class="text-center" style="margin-bottom: 0"
+					>© 2021 Build by fuaberu | If you liked and want to support me you can always
+					buy me a
+					<a href="http://Ko-fi.com/fuaberu" target="_blank" rel="noopener noreferrer"
+						>Ko-fi</a
+					>.</p
+				>
+			</div>
+		</footer>
 	</body>
 </html>
